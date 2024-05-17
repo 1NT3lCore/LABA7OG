@@ -1,0 +1,3 @@
+﻿  L7.cpp
+C:\Users\kpana\source\repos\L7\L7\L7.cpp(4,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  L7.vcxproj -> C:\Users\kpana\source\repos\L7\x64\Debug\L7.exe
