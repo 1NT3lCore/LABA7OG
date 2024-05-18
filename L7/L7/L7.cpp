@@ -1,18 +1,61 @@
-﻿#include "shtuka.h"
+#include <iostream>
+#include <regex>
+#include "shtuka.h"
 
 int main() {
     srand(time(0)); // Инициализация генератора случайных чисел
 
     int N, F, S;
-    std::cout << "Enter the number of elements to move: ";
-    std::cin >> N;
-    std::cout << "Enter the number of elements in first queue: ";
-    std::cin >> F;
-    std::cout << "Enter the number of elements in second queue: ";
-    std::cin >> S;
+    std::regex naturalNumberRegex("^[1-9]\\d*$");
+
+    do {
+        std::cout << "Enter the number of elements to move (a natural number): ";
+        std::string input;
+        while (true) {
+            std::cin >> input;
+            if (std::regex_match(input, naturalNumberRegex)) {
+                N = std::stoi(input);
+                break;
+            }
+            else {
+                std::cout << "Invalid input. Please enter a natural number: ";
+            }
+        }
+    } while (N <= 0);
+
+    do {
+        std::cout << "Enter the number of elements in first queue (a natural number): ";
+        std::string input;
+        while (true) {
+            std::cin >> input;
+            if (std::regex_match(input, naturalNumberRegex)) {
+                F = std::stoi(input);
+                break;
+            }
+            else {
+                std::cout << "Invalid input. Please enter a natural number: ";
+            }
+        }
+    } while (F <= 0);
+
+    do {
+        std::cout << "Enter the number of elements in second queue (a natural number): ";
+        std::string input;
+        while (true) {
+            std::cin >> input;
+            if (std::regex_match(input, naturalNumberRegex)) {
+                S = std::stoi(input);
+                break;
+            }
+            else {
+                std::cout << "Invalid input. Please enter a natural number: ";
+            }
+        }
+    } while (S <= 0);
 
     Queue* firstQueue = createQueue();
     Queue* secondQueue = createQueue();
+
 
     // Заполнение первой очереди случайными элементами
     for (int i = 0; i < F; ++i) {
