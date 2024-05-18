@@ -1,14 +1,19 @@
-﻿#include "ahahaha.h"
-#include <iostream>
-#include <cstdlib> // Для функции rand()
-#include <ctime> // Для инициализации генератора случайных чисел
+#include "ahahaha.h"
 
 int main() {
     srand(time(0)); // Инициализация генератора случайных чисел
 
     int numElements;
-    std::cout << "Enter the number of elements: ";
-    std::cin >> numElements;
+    do {
+        std::cout << "Enter the number of elements (a natural number > 0): ";
+        std::cin >> numElements;
+
+        if (std::cin.fail() || numElements <= 0) {
+            std::cin.clear(); // Сброс состояния ошибки ввода
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очистка буфера ввода
+            std::cout << "Invalid input. Please enter a natural number greater than 0." << std::endl;
+        }
+    } while (numElements <= 0);
 
     Node* list = createList();
     for (int i = 0; i < numElements; ++i) {
