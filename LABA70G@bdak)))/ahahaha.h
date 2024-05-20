@@ -3,6 +3,7 @@
 #define DYNAMIC_STRUCTURES_H
 
 #include <iostream>
+#include <regex>
 
 struct Node {
 	int data;
